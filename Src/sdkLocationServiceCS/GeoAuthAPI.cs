@@ -21,16 +21,19 @@ namespace GeoAuthApp
     /// <author>Andrew From (fromx010)</author>
     public class GeoAuthAPI
     {
+        // TODO? Put a lock on the response and request msg?
         private static ManualResetEvent apiCallEvent = new ManualResetEvent(false);
         private string postDataRequest;
         private string apiResponseMsg;
 
+        private static GeoAppStorage settings = new GeoAppStorage();
+        private string mainServer = settings.mainServer;
+        private string apiKey = settings.apiKey;
+
+
         public GeoAuthAPI()
         {
         }
-
-        HttpWebRequest httpWReq =
-    (HttpWebRequest)WebRequest.Create(@"http:\\domain.com\page.asp");
 
         /// <summary>
         /// Request a new device key registered to a specific API key.
@@ -40,9 +43,35 @@ namespace GeoAuthApp
         /// <c>true</c>: When request suceeded
         /// <c>false</c>: When request failed
         /// </returns>
-        public bool RequestDevKey(string apiKey)
+        public bool RequestDeviceKey()
         {
-            return false;
+            string uriPath = settings.mainServer + "/service/request-device-key";
+            List<PostData> postDataList = new List<PostData>();
+
+            PostData _apiKey = new PostData("api_key", this.apiKey);
+            postDataList.Add(_apiKey);
+
+            //Generate and store the Request String for POST
+            GeneratePostString(postDataList);
+
+            //Now do the API Call
+            if (ApiRequest(uriPath))
+            {   
+                //TODO fetch and store new device key
+                if (this.apiResponseMsg.Contains("OK"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            //Api call failed
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -58,7 +87,43 @@ namespace GeoAuthApp
         /// </returns>
         public bool Register(string deviceKey, string deviceName, string username, string password)
         {
-            return false;
+            string uriPath = settings.mainServer + "/device/register";
+
+            List<PostData> postDataList = new List<PostData>();
+
+            PostData _deviceKey = new PostData("device_key", deviceKey);
+            postDataList.Add(_deviceKey);
+
+            PostData _deviceName = new PostData("device_name", deviceName);
+            postDataList.Add(_deviceName);
+
+            PostData _username = new PostData("username", username);
+            postDataList.Add(_username);
+
+            PostData _password = new PostData("password", password);
+            postDataList.Add(_password);
+
+            //Generate and store the Request String for POST
+            GeneratePostString(postDataList);
+
+            //Now do the API Call
+            if (ApiRequest(uriPath))
+            {
+                //TODO fetch and store new device key
+                if (this.apiResponseMsg.Contains("OK"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            //Api call failed
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -74,6 +139,8 @@ namespace GeoAuthApp
         /// </returns>
         public bool Checkin(string deviceId, string latitude, string longitude, string time)
         {
+            string uriPath = settings.mainServer + "/api/device/check-in";
+
             List<PostData> postDataList = new List<PostData>();
 
             PostData _deviceId = new PostData("device_id", deviceId);
@@ -84,22 +151,31 @@ namespace GeoAuthApp
 
             PostData _longitude = new PostData("longitude", longitude);
             postDataList.Add(_longitude);
+
             PostData _time      = new PostData("time", time);
             postDataList.Add(_time);
 
             //Generate and store the Request String for POST
-            this.postDataRequest = GeneratePostString(postDataList);
-            //Now do the API Call
-            ApiRequest();
+            GeneratePostString(postDataList);
 
-            if (this.apiResponseMsg.Contains("OK"))
+            //Now do the API Call
+            if (ApiRequest(uriPath))
             {
-                return true;
+                if (this.apiResponseMsg.Contains("OK"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            //Api call failed
             else
             {
                 return false;
             }
+            
         }
 
         /// <summary>
@@ -109,14 +185,15 @@ namespace GeoAuthApp
         /// <param name="latitude">The latitude of the location region.</param>
         /// <param name="longitude">The longitude of the location region.</param>
         /// <param name="name">The given name to this region.</param>
-        /// <param name="time">(OPTIONAL)The time the update took place.</param>
-        /// <param name="radius">(OPTIONAL)The radius of the circular area which should be considered part of this region.</param>
+        /// <param name="time">(OPTIONAL, NULLABLE)The time the update took place.</param>
+        /// <param name="radius">(OPTIONAL, NULLABLE)The radius of the circular area which should be considered part of this region.</param>
         /// <returns>
         /// <c>true</c>: When request suceeded
         /// <c>false</c>: When request failed
         /// </returns>
         public bool AddRegion(string deviceId, string latitude, string longitude, string name, string time, string radius)
         {
+            string uriPath = settings.mainServer + "/api/device/add-region";
             List<PostData> postDataList = new List<PostData>();
 
             PostData _deviceId  = new PostData("device_id", deviceId);
@@ -144,22 +221,29 @@ namespace GeoAuthApp
             }
 
             //Generate and store the Request String for POST
-            this.postDataRequest = GeneratePostString(postDataList);
-            //Now do the API Call
-            ApiRequest();
+            GeneratePostString(postDataList);
 
-            //check the result
-            if(this.apiResponseMsg.Contains("OK"))
+            //Now do the API Call
+            if (ApiRequest(uriPath))
             {
-                return true;
+                //check the result
+                if (this.apiResponseMsg.Contains("OK"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+            // Call failed
             else
             {
                 return false;
             }
         }
 
-        private string GeneratePostString(List<PostData> postDataList)
+        private void GeneratePostString(List<PostData> postDataList)
         {
             string postString = "";
             for (int i = 0; i < postDataList.Count; i++)
@@ -173,18 +257,18 @@ namespace GeoAuthApp
                     postString = postString + "&" + postDataList[i].toHtmlCodingAndPair();
                 }
             }
-            return postString;
+            this.postDataRequest = postString;
         }
 
         /// <summary>
         /// APIs the request.
         /// </summary>
         /// <returns></returns>
-        private string ApiRequest()
+        private bool ApiRequest(string uriPath)
         {
             string serverUri = null;
 
-            HttpWebRequest apiRequest = (HttpWebRequest)WebRequest.Create(serverUri);
+            HttpWebRequest apiRequest = (HttpWebRequest)WebRequest.Create(serverUri + uriPath);
 
             apiRequest.Method = "POST";
             apiRequest.ContentType = "application/x-www-form-urlencoded";
@@ -195,7 +279,7 @@ namespace GeoAuthApp
             apiCallEvent.WaitOne();
 
             //Return the Servers Response
-            return this.apiResponseMsg;
+            return true;
         }
 
         /// <summary>
@@ -212,6 +296,7 @@ namespace GeoAuthApp
 
             // End the operation
             Stream postStream = request.EndGetRequestStream(asynchronousResult);
+
             // Get the string to post
             string postData = this.postDataRequest;
 
