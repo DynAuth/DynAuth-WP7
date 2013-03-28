@@ -29,6 +29,7 @@ namespace GeoAuthApp
         private static GeoAppStorage settings = new GeoAppStorage();
         private string mainServer = settings.mainServer;
         private string apiKey = settings.apiKey;
+        private string deviceId = settings.DeviceId;
 
 
         public GeoAuthAPI()
@@ -137,13 +138,13 @@ namespace GeoAuthApp
         /// <c>true</c>: When request suceeded
         /// <c>false</c>: When request failed
         /// </returns>
-        public bool Checkin(string deviceId, string latitude, string longitude, string time)
+        public bool Checkin(string latitude, string longitude, string time)
         {
-            string uriPath = settings.mainServer + "/api/device/check-in";
+            string uriPath = settings.mainServer + "/device/check-in";
 
             List<PostData> postDataList = new List<PostData>();
 
-            PostData _deviceId = new PostData("device_id", deviceId);
+            PostData _deviceId = new PostData("device_id", this.deviceId);
             postDataList.Add(_deviceId);
 
             PostData _latitude = new PostData("latitude", latitude);
@@ -266,9 +267,7 @@ namespace GeoAuthApp
         /// <returns></returns>
         private bool ApiRequest(string uriPath)
         {
-            string serverUri = null;
-
-            HttpWebRequest apiRequest = (HttpWebRequest)WebRequest.Create(serverUri + uriPath);
+            HttpWebRequest apiRequest = (HttpWebRequest)HttpWebRequest.CreateHttp(uriPath);
 
             apiRequest.Method = "POST";
             apiRequest.ContentType = "application/x-www-form-urlencoded";

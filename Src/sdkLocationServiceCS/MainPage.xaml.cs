@@ -11,6 +11,7 @@ namespace GeoAuthApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private GeoAuthAPI geoAuthApi = new GeoAuthAPI();
         /// <summary>
         /// This sample receives data from the Location Service and displays the geographic coordinates of the device.
         /// </summary>
@@ -150,8 +151,12 @@ namespace GeoAuthApp
         void MyPositionChanged(GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
             // Update the TextBlocks to show the current location
-            LatitudeTextBlock.Text = e.Position.Location.Latitude.ToString("0.000");
-            LongitudeTextBlock.Text = e.Position.Location.Longitude.ToString("0.000");
+            string latitude =  e.Position.Location.Latitude.ToString("0.000");
+            string longitude = e.Position.Location.Longitude.ToString("0.000");
+            LatitudeTextBlock.Text = latitude;
+            LongitudeTextBlock.Text = longitude;
+            //Log the new location
+            geoAuthApi.Checkin(latitude, longitude, DateTime.Now.ToString("HH:mm:ss tt"));
         }
 
         #endregion

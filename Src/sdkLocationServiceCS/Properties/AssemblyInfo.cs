@@ -17,12 +17,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("sdkLocationServiceCS")]
+[assembly: AssemblyTitle("GeoAuthApp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("sdkLocationServiceCS")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyProduct("GeoAuthApp")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
