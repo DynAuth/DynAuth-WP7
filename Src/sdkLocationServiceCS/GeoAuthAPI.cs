@@ -140,7 +140,7 @@ namespace GeoAuthApp
         /// </returns>
         public bool Checkin(string latitude, string longitude, string time)
         {
-            string uriPath = settings.mainServer + "/device/check-in";
+            string uriPath = settings.mainServer + "/device/check-in/";
 
             List<PostData> postDataList = new List<PostData>();
 

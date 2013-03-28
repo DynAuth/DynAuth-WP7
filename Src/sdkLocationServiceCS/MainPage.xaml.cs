@@ -156,7 +156,7 @@ namespace GeoAuthApp
             LatitudeTextBlock.Text = latitude;
             LongitudeTextBlock.Text = longitude;
             //Log the new location
-            geoAuthApi.Checkin(latitude, longitude, DateTime.Now.ToString("HH:mm:ss tt"));
+            geoAuthApi.Checkin(latitude, longitude, DateTime.Now.ToString("HH:mm:ss"));
         }
 
         #endregion
