@@ -120,6 +120,10 @@ namespace GeoAuthApp
 
         #region Protected methods
 
+        /// <summary>
+        /// Handles Asynchronous HTTP Requests
+        /// </summary>
+        /// <param name="asyncResult">The async result.</param>
         void RequestReady(IAsyncResult asyncResult)
         {
             HttpWebRequest request = asyncResult.AsyncState as HttpWebRequest;
@@ -136,6 +140,10 @@ namespace GeoAuthApp
             request.BeginGetResponse(new AsyncCallback(ResponseReady), request);
         }
 
+        /// <summary>
+        /// Handles Asynchronous HTTP Responses
+        /// </summary>
+        /// <param name="asyncResult">The async result.</param>
         void ResponseReady(IAsyncResult asyncResult)
         {
             HttpWebRequest request = asyncResult.AsyncState as HttpWebRequest;

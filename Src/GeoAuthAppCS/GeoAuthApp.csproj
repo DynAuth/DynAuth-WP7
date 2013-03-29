@@ -62,8 +62,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GeoAuthApi\CheckInRequest.cs" />
     <Compile Include="GeoAppStorage.cs" />
-    <Compile Include="GeoAuthAPI.cs" />
+    <Compile Include="GeoAuthApi\AddRegionRequest.cs" />
+    <Compile Include="GeoAuthApi\DeviceKeyRequest.cs" />
+    <Compile Include="GeoAuthApi\RegisterRequest.cs" />
+    <Compile Include="GeoAuthApi\GeopAppApiEventArgs.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -88,7 +92,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>

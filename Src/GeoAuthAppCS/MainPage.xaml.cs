@@ -6,12 +6,12 @@ using System;
 using System.Windows;
 using Microsoft.Phone.Controls;
 using System.Device.Location;
+using GeoAuthApi;
 
 namespace GeoAuthApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private GeoAuthAPI geoAuthApi = new GeoAuthAPI();
         /// <summary>
         /// This sample receives data from the Location Service and displays the geographic coordinates of the device.
         /// </summary>
@@ -74,7 +74,21 @@ namespace GeoAuthApp
             {
                 string latitude = watcher.Position.Location.Latitude.ToString("0.000");
                 string longitude = watcher.Position.Location.Longitude.ToString("0.000");
-                geoAuthApi.Checkin(latitude, longitude, getCurrentDateTime());
+                GeoAuthApi.CheckInRequest checkInCall = new GeoAuthApi.CheckInRequest();
+                checkInCall.CheckIn(latitude, longitude, getCurrentDateTime());
+
+                //Update the UI on the result
+                checkInCall.CheckInStatus += (send, evt) =>
+                {
+                    if (evt.Error == null)
+                    {
+                        lblCheckInErrors.Text = evt.Result;
+                        //esponseResult = e.Result;
+                    }
+                };
+
+                //GeoAuthApi.CheckIn(latitude, longitude, getCurrentDateTime());
+
             }
         }
 
