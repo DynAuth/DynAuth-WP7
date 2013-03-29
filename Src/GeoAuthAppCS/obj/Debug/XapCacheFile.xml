@@ -1,11 +1,11 @@
-﻿<xapCache source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Bin\Debug\GeoAuthApp.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="3/28/2013 7:53:48 PM">
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="3/28/2013 1:50:57 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Background.png" archivePath="Background.png" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.dll" archivePath="GeoAuthApp.dll" lastWriteTime="3/28/2013 7:53:47 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Images\high.png" archivePath="Images\high.png" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Images\low.png" archivePath="Images\low.png" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Images\stop.png" archivePath="Images\stop.png" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="3/5/2013 3:13:32 PM" />
-  <file source="C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="3/28/2013 1:50:57 PM" />
+﻿<xapCache source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="3/28/2013 10:32:15 PM">
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="3/28/2013 1:50:57 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Background.png" archivePath="Background.png" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.dll" archivePath="GeoAuthApp.dll" lastWriteTime="3/28/2013 10:32:15 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Images\high.png" archivePath="Images\high.png" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Images\low.png" archivePath="Images\low.png" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Images\stop.png" archivePath="Images\stop.png" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="3/5/2013 3:13:32 PM" />
+  <file source="C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="3/28/2013 1:50:57 PM" />
 </xapCache>

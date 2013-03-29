@@ -19,7 +19,7 @@ namespace GeoAuthApp
         GeoCoordinateWatcher watcher;
         string accuracyText = "";
 
-        #region Initialization
+        #region Constructors
 
         /// <summary>
         /// Constructor for the PhoneApplicationPage object
@@ -65,6 +65,17 @@ namespace GeoAuthApp
             StatusTextBlock.Text = "location service is off";
             LatitudeTextBlock.Text = " ";
             LongitudeTextBlock.Text = " ";
+        }
+
+        private void CheckInLocation(object sender, EventArgs e)
+        {
+            //TODO Check if they are registered
+            if ((watcher != null) && (GeoPositionStatus.Ready == watcher.Status))
+            {
+                string latitude = watcher.Position.Location.Latitude.ToString("0.000");
+                string longitude = watcher.Position.Location.Longitude.ToString("0.000");
+                geoAuthApi.Checkin(latitude, longitude, getCurrentDateTime());
+            }
         }
 
         #endregion
@@ -153,12 +164,15 @@ namespace GeoAuthApp
             // Update the TextBlocks to show the current location
             string latitude =  e.Position.Location.Latitude.ToString("0.000");
             string longitude = e.Position.Location.Longitude.ToString("0.000");
-            string date = DateTime.Now.ToString("yyyy-mm-dd");
-            string time = DateTime.Now.ToString("HH:mm:ss");
             LatitudeTextBlock.Text = latitude;
             LongitudeTextBlock.Text = longitude;
-            //Log the new location
-            geoAuthApi.Checkin(latitude, longitude, date + " " + time);
+        }
+
+        private string getCurrentDateTime()
+        {
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            string time = DateTime.Now.ToString("HH:mm:ss");
+            return date + "+" + time;
         }
 
         #endregion

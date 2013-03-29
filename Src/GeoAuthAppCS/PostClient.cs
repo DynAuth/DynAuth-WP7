@@ -60,6 +60,11 @@ namespace GeoAuthApp
             {
                 postData.Append(string.Format("{0}&", element));
             }
+
+            //Remove the trailing &, kinda of hackish
+            string postDataString = postData.ToString().TrimEnd('&');
+            postData.Clear();
+            postData.Append(postDataString);
         }
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace GeoAuthApp
             try
             {
                 response = (HttpWebResponse)request.EndGetResponse(asyncResult);
-
+                string statusCode = response.StatusCode.ToString();
                 string result = string.Empty;
                 using (Stream responseStream = response.GetResponseStream())
                 {
@@ -157,8 +162,9 @@ namespace GeoAuthApp
                     });
                 }
             }
-            catch
+            catch (Exception e)
             {
+                string exceptionMsg = e.Message;
                 if (DownloadStringCompleted != null)
                 {
                     System.Windows.Deployment.Current.Dispatcher.BeginInvoke(delegate()

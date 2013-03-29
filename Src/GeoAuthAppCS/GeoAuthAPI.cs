@@ -61,7 +61,7 @@ namespace GeoAuthApp
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));
 
             // Check if it was successful
-            if (responseResult.Contains("OK"))
+            if ((responseResult != null) && (responseResult.Contains("OK")))
             {
                 //TODO store the devicekey
                 apiResponse.Success = true;
@@ -102,7 +102,10 @@ namespace GeoAuthApp
             }
             else
             {
-                return false;
+                apiResponse.Success = false;
+                apiResponse.HttpCode = HttpStatusCode.Ambiguous;
+                apiResponse.Message = "Missing Required device key";
+                return apiResponse;
             }
             parameters.Add("device_name", deviceName);
             parameters.Add("username", username);
@@ -120,7 +123,7 @@ namespace GeoAuthApp
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));
 
             // Check if it was successful
-            if(responseResult.Contains("OK"))
+            if ((responseResult != null) && (responseResult.Contains("OK")))
             {
                 apiResponse.Success = true;
                 apiResponse.HttpCode = HttpStatusCode.OK;
@@ -151,7 +154,7 @@ namespace GeoAuthApp
         {
             ApiResponse apiResponse = new ApiResponse();
             string responseResult = null;
-            string uriPath = settings.mainServer + "/device/check-in";
+            string uriPath = settings.mainServer + "/api/device/check-in";
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
             parameters.Add("device_id", this.deviceId);
@@ -171,7 +174,7 @@ namespace GeoAuthApp
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));
 
             // Check if it was successful
-            if(responseResult.Contains("OK"))
+            if((responseResult != null) && (responseResult.Contains("OK")))
             {
                 apiResponse.Success = true;
                 apiResponse.HttpCode = HttpStatusCode.OK;
@@ -233,7 +236,7 @@ namespace GeoAuthApp
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));
 
             // Check if it was successful
-            if (responseResult.Contains("OK"))
+            if ((responseResult != null) && (responseResult.Contains("OK")))
             {
                 apiResponse.Success = true;
                 apiResponse.HttpCode = HttpStatusCode.OK;
