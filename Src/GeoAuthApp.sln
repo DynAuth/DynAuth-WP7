@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoAuthApp", "sdkLocationServiceCS\GeoAuthApp.csproj", "{49CBFAE9-A5B7-47E6-B914-890E925F4734}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoAuthApp", "GeoAuthAppCS\GeoAuthApp.csproj", "{49CBFAE9-A5B7-47E6-B914-890E925F4734}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

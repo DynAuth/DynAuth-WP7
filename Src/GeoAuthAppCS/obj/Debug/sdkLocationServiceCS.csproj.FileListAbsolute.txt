@@ -1,0 +1,13 @@
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\ApplicationIcon.png
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\Background.png
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\sdkLocationServiceCS.dll
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\sdkLocationServiceCS.pdb
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\AppManifest.xaml
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\Bin\Debug\sdkLocationServiceCS.xap
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\App.g.i.cs
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\MainPage.g.i.cs
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\sdkLocationServiceCS.g.resources
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\sdkLocationServiceCS.dll
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\sdkLocationServiceCS.pdb
+C:\Users\uaxf951\Documents\College\Cs5221\Project 1\location\C#\sdkLocationServiceCS\obj\Debug\XapCacheFile.xml

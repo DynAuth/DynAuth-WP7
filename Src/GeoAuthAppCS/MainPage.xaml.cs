@@ -153,10 +153,12 @@ namespace GeoAuthApp
             // Update the TextBlocks to show the current location
             string latitude =  e.Position.Location.Latitude.ToString("0.000");
             string longitude = e.Position.Location.Longitude.ToString("0.000");
+            string date = DateTime.Now.ToString("yyyy-mm-dd");
+            string time = DateTime.Now.ToString("HH:mm:ss");
             LatitudeTextBlock.Text = latitude;
             LongitudeTextBlock.Text = longitude;
             //Log the new location
-            geoAuthApi.Checkin(latitude, longitude, DateTime.Now.ToString("HH:mm:ss"));
+            geoAuthApi.Checkin(latitude, longitude, date + " " + time);
         }
 
         #endregion
