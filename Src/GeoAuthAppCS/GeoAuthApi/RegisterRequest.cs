@@ -70,13 +70,13 @@ namespace GeoAuthApi
                     }
                     else
                     {
-                        RegisterStatus(this, new GeopAppApiEventArgs("Failed, try again"));
+                        RegisterStatus(this, new GeopAppApiEventArgs(new Exception("Failed to register")));
                     }
 
                 }
                 else
                 {
-                    RegisterStatus(this, new GeopAppApiEventArgs("Failed, try again"));
+                    RegisterStatus(this, new GeopAppApiEventArgs(new Exception("Failed to register")));
                 }
             };
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));

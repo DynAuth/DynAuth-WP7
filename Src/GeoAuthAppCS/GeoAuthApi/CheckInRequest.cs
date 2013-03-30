@@ -65,12 +65,12 @@ namespace GeoAuthApi
                     }
                     else
                     {
-                        CheckInStatus(this, new GeopAppApiEventArgs("Failed, try again"));
+                        CheckInStatus(this, new GeopAppApiEventArgs(new Exception("Failed to Check-in")));
                     }
                 }
                 else
                 {
-                    CheckInStatus(this, new GeopAppApiEventArgs("Failed, try again"));
+                    CheckInStatus(this, new GeopAppApiEventArgs(new Exception("Failed to Check-in")));
                 }
             };
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));

@@ -60,12 +60,12 @@ namespace GeoAuthApi
                     }
                     else
                     {
-                        DeviceKeyStatus(this, new GeopAppApiEventArgs("Error retrieving Device Key"));
+                        DeviceKeyStatus(this, new GeopAppApiEventArgs(new Exception("Error retrieving device key")));
                     }
                 }
                 else
                 {
-                    DeviceKeyStatus(this, new GeopAppApiEventArgs("Error retrieving Device Key"));
+                    DeviceKeyStatus(this, new GeopAppApiEventArgs(new Exception("Error retrieving device key")));
                 }
             };
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));

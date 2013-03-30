@@ -75,12 +75,12 @@ namespace GeoAuthApi
                     }
                     else
                     {
-                        AddRegionStatus(this, new GeopAppApiEventArgs("Add Region FAILED"));
+                        AddRegionStatus(this, new GeopAppApiEventArgs(new Exception("Failed to add region")));
                     }
                 }
                 else
                 {
-                    AddRegionStatus(this, new GeopAppApiEventArgs("Add Region FAILED"));
+                    AddRegionStatus(this, new GeopAppApiEventArgs(new Exception("Failed to add region")));
                 }
             };
             proxy.DownloadStringAsync(new Uri(uriPath, UriKind.Absolute));
