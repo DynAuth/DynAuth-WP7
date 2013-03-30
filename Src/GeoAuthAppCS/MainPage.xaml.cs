@@ -7,11 +7,14 @@ using System.Windows;
 using Microsoft.Phone.Controls;
 using System.Device.Location;
 using GeoAuthApi;
+using System.Windows.Navigation;
 
 namespace GeoAuthApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private static GeoAppStorage settings = new GeoAppStorage();
+
         /// <summary>
         /// This sample receives data from the Location Service and displays the geographic coordinates of the device.
         /// </summary>
@@ -69,26 +72,33 @@ namespace GeoAuthApp
 
         private void CheckInLocation(object sender, EventArgs e)
         {
-            //TODO Check if they are registered
-            if ((watcher != null) && (GeoPositionStatus.Ready == watcher.Status))
+            //Check to see if we have a deviceId otherwise have them register
+            if (settings.DeviceId != null)
             {
-                string latitude = watcher.Position.Location.Latitude.ToString("0.000");
-                string longitude = watcher.Position.Location.Longitude.ToString("0.000");
-                GeoAuthApi.CheckInRequest checkInCall = new GeoAuthApi.CheckInRequest();
-                checkInCall.CheckIn(latitude, longitude, getCurrentDateTime());
-
-                //Update the UI on the result
-                checkInCall.CheckInStatus += (send, evt) =>
+                if ((watcher != null) && (GeoPositionStatus.Ready == watcher.Status))
                 {
-                    if (evt.Error == null)
+                    string latitude = watcher.Position.Location.Latitude.ToString("0.000");
+                    string longitude = watcher.Position.Location.Longitude.ToString("0.000");
+                    GeoAuthApi.CheckInRequest checkInCall = new GeoAuthApi.CheckInRequest();
+                    checkInCall.CheckIn(latitude, longitude, getCurrentDateTime());
+
+                    //Update the UI on the result
+                    checkInCall.CheckInStatus += (send, evt) =>
                     {
-                        lblCheckInErrors.Text = evt.Result;
-                        //esponseResult = e.Result;
-                    }
-                };
-
-                //GeoAuthApi.CheckIn(latitude, longitude, getCurrentDateTime());
-
+                        if (evt.Error == null)
+                        {
+                            lblCheckInErrors.Text = evt.Result;
+                        }
+                    };
+                }
+                else
+                {
+                    lblCheckInErrors.Text = "Please select GPS Accuracy";
+                }
+            }
+            else
+            {
+                NavigationService.Navigate(new Uri("/RegisterPage.xaml", UriKind.RelativeOrAbsolute)); 
             }
         }
 

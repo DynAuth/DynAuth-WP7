@@ -11,17 +11,3 @@ C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.g.resources
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.dll
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.pdb
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\XapCacheFile.xml
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\ResolveAssemblyReference.cache
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\App.g.i.cs
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\MainPage.g.i.cs
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.g.resources
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.dll
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\ApplicationIcon.png
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\Background.png
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.dll
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.pdb
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\AppManifest.xaml
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.xap
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.pdb
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\XapCacheFile.xml
-C:\Git\Repo\GeoAuthApp\Src\GeoAuthAppCS\obj\Debug\RegisterPage.g.i.cs

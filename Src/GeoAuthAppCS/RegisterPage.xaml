@@ -30,10 +30,12 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <StackPanel Orientation="Vertical">
                 <TextBlock HorizontalAlignment="Left" Name="lblErrors" Text="" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Red" />
+                <TextBlock HorizontalAlignment="Left" Name="lblDevNmae" Text="Device Name" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
+                <TextBox HorizontalAlignment="Left" Name="txtBoxDevName" Width="436" />
                 <TextBlock HorizontalAlignment="Left" Name="lblUsername" Text="Username" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
-                <TextBox HorizontalAlignment="Left" Name="username" Width="436" />
+                <TextBox HorizontalAlignment="Left" Name="txtBoxUsername" Width="436" />
                 <TextBlock HorizontalAlignment="Left" Name="lblPassword" Text="Password" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
-                <TextBox HorizontalAlignment="Left" Name="password" Width="436" />
+                <TextBox HorizontalAlignment="Left" Name="txtBoxPassword" Width="436" />
                 <Button HorizontalAlignment="Left" Name="Register" Content="Register" Click="Register_Click"/>
             </StackPanel>
         </Grid>
