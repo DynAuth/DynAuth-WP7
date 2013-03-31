@@ -8,11 +8,19 @@ using Microsoft.Phone.Controls;
 using System.Device.Location;
 using GeoAuthApi;
 using System.Windows.Navigation;
+using GeoAuthApp.ViewModel;
+using GeoAuthApp.Model;
+
+
 
 namespace GeoAuthApp
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private static string DBConnectionString = "Data Source=isostore:/GeoAuth.sdf";
+        private GeoAuthViewModel geoAuthDBView;
+
+
         private static GeoAppStorage settings = new GeoAppStorage();
 
         /// <summary>
@@ -30,6 +38,7 @@ namespace GeoAuthApp
         public MainPage()
         {
             InitializeComponent();
+            geoAuthDBView = new GeoAuthViewModel(DBConnectionString);
         }
 
         #endregion
@@ -104,26 +113,109 @@ namespace GeoAuthApp
 
         private void CreateRegion_Click(object sender, RoutedEventArgs e)
         {
-            //Make sure we have GPS data
-            if ((watcher != null) && (GeoPositionStatus.Ready == watcher.Status))
+            //Check to see if we have a deviceId otherwise have them register
+            if (settings.DeviceId != null)
             {
-                //Hide un-needed buttons
-                CreateRegion.Visibility = System.Windows.Visibility.Collapsed;
-                CheckIn.Visibility = System.Windows.Visibility.Collapsed;
-                //show the input controls for region
-                pnlRegion.Visibility = System.Windows.Visibility.Visible;           
+                //Make sure we have GPS data
+                if ((watcher != null) && (GeoPositionStatus.Ready == watcher.Status))
+                {
+                    //Hide un-needed buttons
+                    CreateRegion.Visibility = System.Windows.Visibility.Collapsed;
+                    CheckIn.Visibility = System.Windows.Visibility.Collapsed;
+                    //show the input controls for region
+                    pnlRegion.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    lblCheckInErrors.Text = "GPS not enabled to add region";
+                }
             }
             else
             {
-                lblCheckInErrors.Text = "GPS not enabled to add region";
+                NavigationService.Navigate(new Uri("/Pages/RegisterPage.xaml", UriKind.RelativeOrAbsolute));
             }
         }
 
         private void AddRegion_Click(object sender, RoutedEventArgs e)
         {
+            //error messages
+            string alreadyExistsInDB = "A Location with that name already exists";
+            double dRadius;
+            string locationName = txtBoxLocationName.Text;
+            string sLatitude = watcher.Position.Location.Latitude.ToString("0.000");
+            string sLongitude =  watcher.Position.Location.Longitude.ToString("0.000");
+            double dLatitude = watcher.Position.Location.Latitude;
+            double dLongitude = watcher.Position.Location.Longitude;
+
             if (!String.IsNullOrEmpty(txtBoxLocationName.Text))
             {
+                if (String.IsNullOrEmpty(txtBoxLocationRadius.Text))
+                {
+                    //Create the locationRegion object for the table
+                    GeoAuthLocationRegion newLocationRegion = new GeoAuthLocationRegion
+                    {
+                        RegionName = locationName,
+                        Latitude = dLatitude,
+                        Longitude = dLongitude
+                    };
 
+                    if (geoAuthDBView.AddLocationRegion(newLocationRegion))
+                    {
+                        //Make the API call
+                        GeoAuthApi.AddRegionRequest regionRequest = new AddRegionRequest();
+                        regionRequest.AddRegion(sLatitude, sLongitude, locationName, getCurrentDateTime(), null);
+
+                        //Update the UI on the result
+                        regionRequest.AddRegionStatus += (send, evt) =>
+                        {
+                            if (evt.Error == null)
+                            {
+                                lblCheckInErrors.Text = evt.Result;
+                            }
+                        };
+                    }
+                    else
+                    {
+                        lblCheckInErrors.Text = alreadyExistsInDB;
+                    }
+
+                }
+                else if (Double.TryParse(txtBoxLocationRadius.Text, out dRadius))
+                {
+                    //Create the locationRegion object for the table
+                    GeoAuthLocationRegion newLocationRegion = new GeoAuthLocationRegion
+                    {
+                        RegionName = locationName,
+                        Latitude = dLatitude,
+                        Longitude = dLongitude,
+                        Radius = dRadius
+                    };
+
+                    if (geoAuthDBView.AddLocationRegion(newLocationRegion))
+                    {
+
+                        //Make the API call
+                        GeoAuthApi.AddRegionRequest regionRequest = new AddRegionRequest();
+                        regionRequest.AddRegion(sLatitude, sLongitude, locationName, getCurrentDateTime(), dRadius.ToString());
+
+                        //Update the UI on the result
+                        regionRequest.AddRegionStatus += (send, evt) =>
+                        {
+                            if (evt.Error == null)
+                            {
+                                lblCheckInErrors.Text = evt.Result;
+                            }
+                        };
+                    }
+                    else
+                    {
+                        lblCheckInErrors.Text = alreadyExistsInDB;
+                    }
+                }
+                else
+                {
+                    lblCheckInErrors.Text = "Could not convert Radius to number";
+                }
             }
             else
             {
@@ -232,6 +324,9 @@ namespace GeoAuthApp
             string longitude = e.Position.Location.Longitude.ToString("0.000");
             LatitudeTextBlock.Text = latitude;
             LongitudeTextBlock.Text = longitude;
+
+            // Check to see if we are in a named region
+
         }
 
         private string getCurrentDateTime()

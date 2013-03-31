@@ -23,19 +23,20 @@ namespace GeoAuthApp.Model
         { }
 
         // Specify a table for location region
-        public Table<LocationRegion> LocationRegion;
+        public Table<GeoAuthLocationRegion> LocationRegion;
     }
 
     [Table]
-    public class LocationRegion : INotifyPropertyChanged, INotifyPropertyChanging
+    public class GeoAuthLocationRegion : INotifyPropertyChanged, INotifyPropertyChanging
     {
+        public GeoAuthLocationRegion() { }
 
         #region Columns
 
         private int _regionId;
 
         [Column(IsPrimaryKey = true, IsDbGenerated = true, DbType = "INT NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public int regionId
+        public int RegionId
         {
             get
             {
@@ -55,8 +56,8 @@ namespace GeoAuthApp.Model
 
         private string _regionName;
 
-        [Column(IsPrimaryKey = true, IsDbGenerated = false, DbType = "NVARCHAR(255) NOT NULL Identity", CanBeNull = false, AutoSync = AutoSync.OnUpdate)]
-        public string regionName
+        [Column(IsPrimaryKey = false, IsDbGenerated = false, DbType = "NVARCHAR(255) NOT NULL", CanBeNull = false, AutoSync = AutoSync.OnUpdate)]
+        public string RegionName
         {
             get
             {
@@ -75,7 +76,7 @@ namespace GeoAuthApp.Model
 
         private double _latitude;
         [Column(IsPrimaryKey = false, IsDbGenerated = false, DbType = "float NOT NULL", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public double latitude
+        public double Latitude
         {
             get
             {
@@ -94,7 +95,7 @@ namespace GeoAuthApp.Model
 
         private double _longitude;
         [Column(IsPrimaryKey = false, IsDbGenerated = false, DbType = "float NOT NULL", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public double longitude
+        public double Longitude
         {
             get
             {
@@ -112,8 +113,8 @@ namespace GeoAuthApp.Model
         }
 
         private double _radius;
-        [Column(IsPrimaryKey = false, IsDbGenerated = false, DbType = "float NOT NULL", CanBeNull = false, AutoSync = AutoSync.OnInsert)]
-        public double radius
+        [Column(IsPrimaryKey = false, IsDbGenerated = false, DbType = "float NULL", CanBeNull = true, AutoSync = AutoSync.OnInsert)]
+        public double Radius
         {
             get
             {

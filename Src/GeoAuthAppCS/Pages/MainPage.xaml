@@ -55,7 +55,7 @@
                     <TextBlock HorizontalAlignment="Left" Name="lblLocationName" Text="Location Name" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}"/>
                     <TextBox HorizontalAlignment="Left" Name="txtBoxLocationName" Width="436" />
                     <TextBlock HorizontalAlignment="Left" Name="lblLocationRadius" Text="Radius (optional)" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="{StaticResource PhoneAccentBrush}"/>
-                    <TextBox HorizontalAlignment="Left" Name="txtBoxLocationRadius" Width="436" />
+                    <TextBox HorizontalAlignment="Left" Name="txtBoxLocationRadius" Width="436" InputScope="TelephoneNumber"/>
                     <Grid>                
                         <Button HorizontalAlignment="Left" Name="AddRegion" Content="Add Region" Width="200" Click="AddRegion_Click"/>
                         <Button  HorizontalAlignment="Right" Name="CancelRegion" Content="Cancel" Width="200" Click="CancelRegion_Click" />
