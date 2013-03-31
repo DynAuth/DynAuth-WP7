@@ -23,7 +23,7 @@ namespace GeoAuthApp
         public GeoAppStorage()
         {
             mainServer = "http://cs5221.oko.io:8000";
-            DeviceId = "b082253c85cd4ae7ab059523ad7191a0";
+            //DeviceId = "b082253c85cd4ae7ab059523ad7191a0";
             StoreSetting("apiKey", "570915b1b5cb4db6981f463b48d09ad8");
         }
 

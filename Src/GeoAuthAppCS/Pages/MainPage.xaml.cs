@@ -81,6 +81,7 @@ namespace GeoAuthApp
 
         private void CheckInLocation(object sender, EventArgs e)
         {
+            clearErrorMessages();
             //Check to see if we have a deviceId otherwise have them register
             if (settings.DeviceId != null)
             {
@@ -96,13 +97,13 @@ namespace GeoAuthApp
                     {
                         if (evt.Error == null)
                         {
-                            lblCheckInErrors.Text = evt.Result;
+                            lblErrors.Text = evt.Result;
                         }
                     };
                 }
                 else
                 {
-                    lblCheckInErrors.Text = "Please select GPS Accuracy";
+                    lblErrors.Text = "Please select GPS Accuracy";
                 }
             }
             else
@@ -113,6 +114,8 @@ namespace GeoAuthApp
 
         private void CreateRegion_Click(object sender, RoutedEventArgs e)
         {
+            clearErrorMessages();
+
             //Check to see if we have a deviceId otherwise have them register
             if (settings.DeviceId != null)
             {
@@ -127,7 +130,7 @@ namespace GeoAuthApp
                 }
                 else
                 {
-                    lblCheckInErrors.Text = "GPS not enabled to add region";
+                    lblErrors.Text = "GPS not enabled to add region";
                 }
             }
             else
@@ -138,6 +141,8 @@ namespace GeoAuthApp
 
         private void AddRegion_Click(object sender, RoutedEventArgs e)
         {
+            clearErrorMessages();
+
             //error messages
             string alreadyExistsInDB = "A Location with that name already exists";
             double dRadius;
@@ -146,6 +151,8 @@ namespace GeoAuthApp
             string sLongitude =  watcher.Position.Location.Longitude.ToString("0.000");
             double dLatitude = watcher.Position.Location.Latitude;
             double dLongitude = watcher.Position.Location.Longitude;
+
+            
 
             if (!String.IsNullOrEmpty(txtBoxLocationName.Text))
             {
@@ -170,13 +177,13 @@ namespace GeoAuthApp
                         {
                             if (evt.Error == null)
                             {
-                                lblCheckInErrors.Text = evt.Result;
+                                lblErrors.Text = evt.Result;
                             }
                         };
                     }
                     else
                     {
-                        lblCheckInErrors.Text = alreadyExistsInDB;
+                        lblErrors.Text = alreadyExistsInDB;
                     }
 
                 }
@@ -203,23 +210,23 @@ namespace GeoAuthApp
                         {
                             if (evt.Error == null)
                             {
-                                lblCheckInErrors.Text = evt.Result;
+                                lblErrors.Text = evt.Result;
                             }
                         };
                     }
                     else
                     {
-                        lblCheckInErrors.Text = alreadyExistsInDB;
+                        lblErrors.Text = alreadyExistsInDB;
                     }
                 }
                 else
                 {
-                    lblCheckInErrors.Text = "Could not convert Radius to number";
+                    lblErrors.Text = "Could not convert Radius to number";
                 }
             }
             else
             {
-                lblCheckInErrors.Text = "Please enter a name";
+                lblErrors.Text = "Please enter a name";
             }
         }
 
@@ -234,6 +241,7 @@ namespace GeoAuthApp
             CreateRegion.Visibility = System.Windows.Visibility.Visible;
             CheckIn.Visibility = System.Windows.Visibility.Visible;
 
+            clearErrorMessages();
         }
 
         #endregion
@@ -329,6 +337,13 @@ namespace GeoAuthApp
 
         }
 
+        
+
+
+        #endregion
+
+
+        #region small helper functions
         private string getCurrentDateTime()
         {
             string date = DateTime.Now.ToString("yyyy-MM-dd");
@@ -336,8 +351,11 @@ namespace GeoAuthApp
             return date + "+" + time;
         }
 
+        private void clearErrorMessages()
+        {
+            lblErrors.Text = "";
+        }
         #endregion
-
 
     }
 }

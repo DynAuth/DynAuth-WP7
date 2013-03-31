@@ -45,7 +45,7 @@
                 <TextBlock HorizontalAlignment="Left" Name="LatitudeTextBlock" Text=" " Width="436" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
                 <TextBlock HorizontalAlignment="Left" Name="LongLabel" Text="longitude" Width="134" Style="{StaticResource PhoneTextLargeStyle}" />
                 <TextBlock HorizontalAlignment="Left" Name="LongitudeTextBlock" Text=" " Width="436" Style="{StaticResource PhoneTextLargeStyle}" Foreground="{StaticResource PhoneAccentBrush}" />
-                <TextBlock HorizontalAlignment="Left" Name="lblCheckInErrors" Text="" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Red" />
+                <TextBlock HorizontalAlignment="Left" Name="lblErrors" Text="" Width="436" Style="{StaticResource PhoneTextNormalStyle}" Foreground="Red" />
                 <Button HorizontalAlignment="Left" Name="CheckIn" Content="Check-In Location" Click="CheckInLocation"/>
 
                 <Button HorizontalAlignment="Left" Name="CreateRegion" Content="Create Region" Click="CreateRegion_Click"/>
