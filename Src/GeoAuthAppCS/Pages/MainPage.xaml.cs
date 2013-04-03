@@ -372,7 +372,6 @@ namespace GeoAuthApp
             //check to if the are registered and the settings exits
             if ((settings.DeviceId != null) && (gpsTimeThres != null) && (gpsDistThres != null))
             {
-                double distance = currentPosition.GetDistanceTo(lastGpsCheckinLocation);
                 //Have never checked-in, do it now
                 if ((lastGpsCheckinTime == null) || (lastGpsCheckinLocation == null))
                 {

@@ -11,3 +11,17 @@ C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.g.resources
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.dll
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\GeoAuthApp.pdb
 C:\Git\Repo\GeoAuthApp\Src\sdkLocationServiceCS\obj\Debug\XapCacheFile.xml
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\ApplicationIcon.png
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\Background.png
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.dll
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.pdb
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\AppManifest.xaml
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\Bin\Debug\GeoAuthApp.xap
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.csprojResolveAssemblyReference.cache
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\App.g.cs
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\Pages\MainPage.g.cs
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\Pages\RegisterPage.g.cs
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.g.resources
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.dll
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\GeoAuthApp.pdb
+C:\Git\Repo\geoauth-client-wp7\Src\GeoAuthAppCS\obj\Debug\XapCacheFile.xml
