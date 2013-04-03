@@ -55,7 +55,7 @@ namespace GeoAuthApi
                     if (responseResult != null)
                     {
                         //store the device key
-                        settings.deviceKey = responseResult;
+                        settings.DeviceKey = responseResult;
                         DeviceKeyStatus(this, new GeopAppApiEventArgs("Device Key reccieved"));
                     }
                     else

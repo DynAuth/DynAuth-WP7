@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.IO.IsolatedStorage;
+using System.Device.Location;
 
 namespace GeoAuthApp
 {
@@ -23,8 +24,13 @@ namespace GeoAuthApp
         public GeoAppStorage()
         {
             mainServer = "http://cs5221.oko.io:8000";
-            //DeviceId = "b082253c85cd4ae7ab059523ad7191a0";
+            //DeviceId = "b082253c85cd4ae7ab059523ad7191a0"; //Used for testing
             StoreSetting("apiKey", "570915b1b5cb4db6981f463b48d09ad8");
+
+            //These values could be user configurable in the future
+            GpsDistThres = 3200; //Update every 2 miles of movement
+            GpsTimeThres = new TimeSpan(0, 15, 0); //Update Every 15 min
+
         }
 
         /// <summary>
@@ -104,7 +110,7 @@ namespace GeoAuthApp
         /// <value>
         /// The device key.
         /// </value>
-        public string deviceKey
+        public string DeviceKey
         {
             get
             {
@@ -123,6 +129,111 @@ namespace GeoAuthApp
                 StoreSetting("deviceKey", value);
             }
         }
+
+        /// <summary>
+        /// Gets or sets the GPS distance threshold until the server is updated
+        /// </summary>
+        /// <value>
+        /// The GPS dist threshold in meters
+        /// </value>
+        public double? GpsDistThres
+        {
+            get
+            {
+                double? value = null;
+                if (TryGetSetting<double?>("gpsDistThres", out value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                StoreSetting<double?>("gpsDistThres", value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the GPS time thres until the server is updated
+        /// </summary>
+        /// <value>
+        /// The GPS time in minutes
+        /// </value>
+        public TimeSpan? GpsTimeThres
+        {
+            get
+            {
+                TimeSpan? value = null;
+                if (TryGetSetting<TimeSpan?>("gpsTimeThres", out value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                StoreSetting<TimeSpan?>("gpsTimeThres", value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the last GPS checkin location.
+        /// </summary>
+        /// <value>
+        /// The last GPS location that was checked in.
+        /// </value>
+        public GeoCoordinate LastGpsCheckinLocation
+        {
+            get
+            {
+                GeoCoordinate value = null;
+                if (TryGetSetting<GeoCoordinate>("lastGpsLocation", out value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                StoreSetting<GeoCoordinate>("lastGpsLocation", value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the last GPS checkin time.
+        /// </summary>
+        /// <value>
+        /// The last GPS checkin time.
+        /// </value>
+        public DateTime? LastGpsCheckinTime
+        {
+            get
+            {
+                DateTime? value = null;
+                if (TryGetSetting<DateTime?>("lastGpsTime", out value))
+                {
+                    return value;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                StoreSetting<DateTime?>("lastGpsTime", value);
+            }
+        }
+
 
         /// <summary>
         /// Stores the setting.

@@ -95,9 +95,13 @@ namespace GeoAuthApp
                     //Update the UI on the result
                     checkInCall.CheckInStatus += (send, evt) =>
                     {
+                        //success
                         if (evt.Error == null)
                         {
                             lblErrors.Text = evt.Result;
+                            //Track last update time and location
+                            settings.LastGpsCheckinLocation = watcher.Position.Location;
+                            settings.LastGpsCheckinTime = DateTime.Now;
                         }
                     };
                 }
@@ -151,8 +155,6 @@ namespace GeoAuthApp
             string sLongitude =  watcher.Position.Location.Longitude.ToString("0.000");
             double dLatitude = watcher.Position.Location.Latitude;
             double dLongitude = watcher.Position.Location.Longitude;
-
-            
 
             if (!String.IsNullOrEmpty(txtBoxLocationName.Text))
             {
@@ -333,7 +335,36 @@ namespace GeoAuthApp
             LatitudeTextBlock.Text = latitude;
             LongitudeTextBlock.Text = longitude;
 
-            // Check to see if we are in a named region
+            //see if we need to check in based on time or distance
+            DateTime? lastGpsCheckinTime = settings.LastGpsCheckinTime;
+            DateTime currentTime = DateTime.Now;
+            TimeSpan? gpsTimeThres = settings.GpsTimeThres;
+
+            GeoCoordinate lastGpsCheckinLocation = settings.LastGpsCheckinLocation;
+            GeoCoordinate currentPosition = e.Position.Location;
+            Double? gpsDistThres = settings.GpsDistThres;
+
+            //check to if the are registered and the settings exits
+            if ((settings.DeviceId != null) && (gpsTimeThres != null) && (gpsDistThres != null))
+            {
+                double distance = currentPosition.GetDistanceTo(lastGpsCheckinLocation);
+                //Have never checked-in, do it now
+                if ((lastGpsCheckinTime == null) || (lastGpsCheckinLocation == null))
+                {
+                    CheckInLocation(null, null);
+                }
+                //We have exceeded out checkin time threshold
+                else if ((lastGpsCheckinTime != null) && ((currentTime.Subtract((TimeSpan)gpsTimeThres).CompareTo((DateTime)lastGpsCheckinTime)) >= 0))
+                {
+                    CheckInLocation(null, null);
+                }
+                //We have exceed the gps checkin threshold
+                
+                else if ((Double)gpsDistThres < currentPosition.GetDistanceTo(lastGpsCheckinLocation))
+                {
+                    CheckInLocation(null, null);
+                }
+            }
 
         }
 

@@ -21,7 +21,7 @@ namespace GeoAuthApp
         public RegisterPage()
         {
             InitializeComponent();
-            if (settings.deviceKey == null)
+            if (settings.DeviceKey == null)
             {
                 Register.Visibility = System.Windows.Visibility.Collapsed;
 
@@ -60,7 +60,7 @@ namespace GeoAuthApp
                 return;
             }
             //check to see if we need to get a device key
-            if (settings.deviceKey == null)
+            if (settings.DeviceKey == null)
             {
                 lblErrors.Text = "Device Key is Missing";
                 return;

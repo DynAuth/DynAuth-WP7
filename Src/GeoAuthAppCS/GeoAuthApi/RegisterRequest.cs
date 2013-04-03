@@ -20,7 +20,7 @@ namespace GeoAuthApi
     {
         private static GeoAppStorage settings = new GeoAppStorage();
         private string mainServer = settings.mainServer;
-        private string deviceKey = settings.deviceKey;
+        private string deviceKey = settings.DeviceKey;
 
         public event RegisterStatusHandler RegisterStatus;
 
