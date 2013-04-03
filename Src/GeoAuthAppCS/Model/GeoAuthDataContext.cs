@@ -129,7 +129,7 @@ namespace GeoAuthApp.Model
                 if (_radius != value)
                 {
                     NotifyPropertyChanging("radius");
-                    _longitude = value;
+                    _radius = value;
                     NotifyPropertyChanged("radius");
                 }
             }
