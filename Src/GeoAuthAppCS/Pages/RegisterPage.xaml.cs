@@ -13,6 +13,10 @@ using Microsoft.Phone.Controls;
 
 namespace GeoAuthApp
 {
+    /// <summary>
+    /// Registration page for new devices
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public partial class RegisterPage : PhoneApplicationPage
     {
         private GeoAppStorage settings = new GeoAppStorage();

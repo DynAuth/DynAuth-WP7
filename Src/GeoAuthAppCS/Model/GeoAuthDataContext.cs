@@ -15,6 +15,10 @@ using System.Collections.ObjectModel;
 
 namespace GeoAuthApp.Model
 {
+    /// <summary>
+    /// Implements the LINQ to SQL local database schema
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class GeoAuthDataContext : DataContext
     {
         // Pass the connection string to the base class.

@@ -16,6 +16,10 @@ namespace GeoAuthApi
 
     public delegate void CheckInStatusHandler(object sender, GeopAppApiEventArgs e);
 
+    /// <summary>
+    /// Implements the /api/device/check-in call
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class CheckInRequest
     {
         private static GeoAppStorage settings = new GeoAppStorage();

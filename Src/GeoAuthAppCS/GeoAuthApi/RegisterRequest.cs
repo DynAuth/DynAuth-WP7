@@ -16,6 +16,10 @@ namespace GeoAuthApi
 
     public delegate void RegisterStatusHandler(object sender, GeopAppApiEventArgs e);
 
+    /// <summary>
+    /// Implements the /api/device/register call
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class RegisterRequest
     {
         private static GeoAppStorage settings = new GeoAppStorage();

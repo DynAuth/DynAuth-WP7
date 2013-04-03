@@ -16,6 +16,10 @@ namespace GeoAuthApi
 
     public delegate void DeviceKeyStatusHandler(object sender, GeopAppApiEventArgs e);
 
+    /// <summary>
+    /// Implements the /api/service/request-device-key call
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class RequestDeviceKey
     {
         private static GeoAppStorage settings = new GeoAppStorage();

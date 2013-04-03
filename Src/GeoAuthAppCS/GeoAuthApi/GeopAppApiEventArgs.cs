@@ -14,6 +14,7 @@ namespace GeoAuthApi
     /// <summary>
     /// Provides data for the DownloadStringCompleted event.
     /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class GeopAppApiEventArgs : EventArgs
     {
         #region Properties

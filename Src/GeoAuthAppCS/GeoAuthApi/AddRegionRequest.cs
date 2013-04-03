@@ -16,6 +16,10 @@ namespace GeoAuthApi
 
     public delegate void AddRegionStatusHandler(object sender, GeopAppApiEventArgs e);
 
+    /// <summary>
+    /// Implements the /api/device/add-region call
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class AddRegionRequest
     {
         private static GeoAppStorage settings = new GeoAppStorage();

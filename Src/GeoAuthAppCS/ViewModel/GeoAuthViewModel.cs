@@ -17,6 +17,11 @@ using System.Data.Linq;
 
 namespace GeoAuthApp.ViewModel
 {
+    /// <summary>
+    /// Implements the LINQ to SQL data accesors, settors, and queries
+    /// for the local database.
+    /// </summary>
+    /// <author>Andrew From (fromx010)</author>
     public class GeoAuthViewModel : INotifyPropertyChanged
     {
         // LINQ to SQL data context for the local database.

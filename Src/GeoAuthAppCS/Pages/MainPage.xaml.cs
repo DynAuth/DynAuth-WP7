@@ -79,6 +79,12 @@ namespace GeoAuthApp
             LongitudeTextBlock.Text = " ";
         }
 
+        /// <summary>
+        /// Checks the in location using the API call
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        /// <author>Andrew From (fromx010)</author>
         private void CheckInLocation(object sender, EventArgs e)
         {
             clearErrorMessages();
@@ -116,6 +122,12 @@ namespace GeoAuthApp
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the CreateRegion control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        /// <author>Andrew From (fromx010)</author>
         private void CreateRegion_Click(object sender, RoutedEventArgs e)
         {
             clearErrorMessages();
@@ -143,6 +155,12 @@ namespace GeoAuthApp
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the AddRegion control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        /// <author>Andrew From (fromx010)</author>
         private void AddRegion_Click(object sender, RoutedEventArgs e)
         {
             clearErrorMessages();
@@ -232,6 +250,12 @@ namespace GeoAuthApp
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the CancelRegion control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
+        /// <author>Andrew From (fromx010)</author>
         private void CancelRegion_Click(object sender, RoutedEventArgs e)
         {
             // Hide the Region UI Elements and clear input
@@ -327,6 +351,7 @@ namespace GeoAuthApp
         /// Custom method called from the PositionChanged event handler
         /// </summary>
         /// <param name="e"></param>
+        /// <author>Andrew From (fromx010)</author>
         void MyPositionChanged(GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
             // Update the TextBlocks to show the current location
